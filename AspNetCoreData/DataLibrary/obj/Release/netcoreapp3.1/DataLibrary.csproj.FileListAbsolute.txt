@@ -1,0 +1,9 @@
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\bin\Release\netcoreapp3.1\DataLibrary.deps.json
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\bin\Release\netcoreapp3.1\DataLibrary.dll
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\bin\Release\netcoreapp3.1\DataLibrary.pdb
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\obj\Release\netcoreapp3.1\DataLibrary.csprojAssemblyReference.cache
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\obj\Release\netcoreapp3.1\DataLibrary.AssemblyInfoInputs.cache
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\obj\Release\netcoreapp3.1\DataLibrary.AssemblyInfo.cs
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\obj\Release\netcoreapp3.1\DataLibrary.csproj.CoreCompileInputs.cache
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\obj\Release\netcoreapp3.1\DataLibrary.dll
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\DataLibrary\obj\Release\netcoreapp3.1\DataLibrary.pdb

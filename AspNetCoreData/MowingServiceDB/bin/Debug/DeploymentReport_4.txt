@@ -1,0 +1,34 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Business] (Table)
+       [dbo].[Employee] (Table)
+       [dbo].[Portfolio] (Table)
+       [dbo].[FK_Employee_Business] (Foreign Key)
+       [dbo].[FK_Portfolio_Employee] (Foreign Key)
+       [dbo].[spBusiness_DeleteByBusinessId] (Procedure)
+       [dbo].[spBusiness_GetBusinessAll] (Procedure)
+       [dbo].[spBusiness_GetBusinessByBusinessId] (Procedure)
+       [dbo].[spBusiness_InsertBusiness] (Procedure)
+       [dbo].[spBusiness_UpdateBusiness] (Procedure)
+       [dbo].[spEmployee_DeleteByEmployeeId] (Procedure)
+       [dbo].[spEmployee_GetEmployeeAll] (Procedure)
+       [dbo].[spEmployee_GetEmployeeByEmployeeId] (Procedure)
+       [dbo].[spEmployee_InsertEmployee] (Procedure)
+       [dbo].[spEmployee_UpdateEmployee] (Procedure)
+       [dbo].[spPortfolio_DeleteByPortfolio] (Procedure)
+       [dbo].[spPortfolio_GetPortfolioAll] (Procedure)
+       [dbo].[spPortfolio_GetPortfolioByPortfolioId] (Procedure)
+       [dbo].[spPortfolio_InsertPortfolio] (Procedure)
+       [dbo].[spPortfolio_UpdatePortfolio] (Procedure)
+
+** Supporting actions

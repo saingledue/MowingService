@@ -1,0 +1,9 @@
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\bin\Debug\MowingServiceDB.dacpac
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\bin\Debug\MowingServiceDB.dll
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\bin\Debug\MowingServiceDB.pdb
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\obj\Debug\Model.xml
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\obj\Debug\refactor.xml
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\obj\Debug\postdeploy.sql
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\obj\Debug\predeploy.sql
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\obj\Debug\MowingServiceDB.dll
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\obj\Debug\MowingServiceDB.pdb

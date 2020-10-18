@@ -1,0 +1,5 @@
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\bin\Release\MowingServiceDB.dacpac
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\bin\Release\MowingServiceDB.dll
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\bin\Release\MowingServiceDB.pdb
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\obj\Release\MowingServiceDB.dll
+C:\Users\saing\OneDrive\Documents\GitHub\AspNetCoreData\MowingServiceDB\obj\Release\MowingServiceDB.pdb

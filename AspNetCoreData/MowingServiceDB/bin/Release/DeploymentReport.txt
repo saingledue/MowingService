@@ -1,0 +1,32 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Business]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column CloseHours in table [dbo].[Business] is currently  TIME (7) NOT NULL but is being changed to  INT
+         NOT NULL. There is no implicit or explicit conversion.
+       The type for column OpenHours in table [dbo].[Business] is currently  TIME (7) NOT NULL but is being changed to  INT NOT
+         NULL. There is no implicit or explicit conversion.
+
+** User actions
+     Table rebuild
+       [dbo].[Business] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Employee_Business] (Foreign Key)
+     Create
+       [dbo].[FK_Employee_Business] (Foreign Key)
+     Refresh
+       [dbo].[spBusiness_DeleteByBusinessId] (Procedure)
+       [dbo].[spBusiness_GetBusinessAll] (Procedure)
+       [dbo].[spBusiness_GetBusinessByBusinessId] (Procedure)
+       [dbo].[spBusiness_InsertBusiness] (Procedure)
+       [dbo].[spBusiness_UpdateBusiness] (Procedure)
+
+The type for column CloseHours in table [dbo].[Business] is currently  TIME (7) NOT NULL but is being changed to  INT NOT NULL. There is no implicit or explicit conversion.
+The type for column OpenHours in table [dbo].[Business] is currently  TIME (7) NOT NULL but is being changed to  INT NOT NULL. There is no implicit or explicit conversion.
+
