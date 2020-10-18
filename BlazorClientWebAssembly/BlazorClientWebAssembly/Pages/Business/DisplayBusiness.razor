@@ -1,0 +1,124 @@
+﻿@page "/Business/DisplayBusiness/{businessId:int}"
+@using System.ComponentModel.Design
+@using System.Runtime.CompilerServices
+@inject HttpClient Http
+@inject NavigationManager navigationManager
+
+
+<h3>DisplayBusiness</h3>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <h4>System Error</h4>
+    <p>@errorString</p>
+}
+else
+{
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><strong>Location</strong></td>
+                <td>@businessInfo.Location</td>
+            </tr>
+            <tr>
+                <td><strong>Opening Hours</strong></td>
+                <td>@businessInfo.OpenHours</td>
+            </tr>
+            <tr>
+                <td><strong>Closing Hours</strong></td>
+                <td>@businessInfo.CloseHours</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @if (confirmDelete)
+                    {
+                        <button class="btn btn-outline-danger" @onclick="HandleDeleteRecord">
+                            Confirm Delete
+                        </button>
+
+                        <button class="btn btn-secondary" @onclick="(() => confirmDelete = false)">
+                            Cancel
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-danger" @onclick="(() => confirmDelete = true)">
+                            Delete Order
+                        </button>
+                    }
+                </td>
+            </tr>
+
+
+        </tbody>
+
+    </table>
+
+    <EditForm Model="@updateModel" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary Model="@updateModel" />
+
+        @*<div class="form-group">
+            <label>Name for the Order</label>
+            <InputText @bind-Value="updateModel.OrderName" class="form-control"></InputText>
+            <ValidationMessage For="@(() => updateModel.OrderName)" class="text-danger" />
+        </div>*@
+
+        @*<div class="form-group">
+            <input type="submit" value="Sumbit Listing" class="btn btn-primary" />
+        </div>*@
+    </EditForm>
+}
+
+@code {
+
+    [Parameter]
+    public int businessId { get; set; }
+
+    public BusinessModel businessInfo = new BusinessModel();
+    private BusinessModel updateModel = new BusinessModel();
+
+    private string errorString;
+    private bool confirmDelete = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        HttpResponseMessage response = await Http.GetAsync($"api/business/{businessId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            businessInfo = await response.Content.ReadFromJsonAsync<BusinessModel>();
+        }
+        else
+        {
+            errorString = response.ReasonPhrase;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            HttpResponseMessage response = await Http.PutAsJsonAsync("api/business", updateModel);
+        }
+        catch (Exception ex)
+        {
+            errorString = ex.Message;
+        }
+    }
+
+    //TODO: not implemented.
+    private async Task HandleDeleteRecord()
+    {
+        HttpResponseMessage response = await Http.DeleteAsync($"api/business/{businessId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            navigationManager.NavigateTo("business/list");
+        }
+        else
+        {
+            errorString = response.ReasonPhrase;
+        }
+    }
+}

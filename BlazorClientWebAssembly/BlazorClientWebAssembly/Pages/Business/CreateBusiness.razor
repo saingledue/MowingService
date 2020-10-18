@@ -1,0 +1,94 @@
+﻿@page "/Business/CreateBusiness"
+
+@inject HttpClient Http
+@inject NavigationManager navigationManager
+
+<h3>Create Business</h3>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <h4>System Error</h4>
+    <p>@errorString</p>
+}
+else
+{
+<EditForm Model="@business" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary Model="@business"></ValidationSummary>
+    <!--<div class="form-group">
+        <label>Item to Order</label>-->
+    @*<select @onchange="FoodItemChange" class="form-control">
+            <option value="">Select a meal...</option>
+            @foreach (var f in foodItems)
+            {
+                <option value="@f.FoodId">@f.Title</option>
+            }
+        </select>*@
+    <!--</div>-->
+    <div class="form-group">
+        <label>Location</label>
+        <InputText @bind-Value="business.Location" class="form-control"></InputText>
+    </div>
+    <div class="form-group">
+        <label>Open Hours</label>
+        <InputNumber @bind-Value="business.OpenHours" class="form-control"></InputNumber>
+        <ValidationMessage For="@(() => business.OpenHours)" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label>Open Hours</label>
+        <InputNumber @bind-Value="business.CloseHours" class="form-control"></InputNumber>
+        <ValidationMessage For="@(() => business.CloseHours)" class="text-danger" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create New Business Listing" class="btn btn-primary" />
+    </div>
+</EditForm>
+
+}
+
+@code {
+    private BusinessModel business = new BusinessModel();
+    // private List<BusinessModel> businessItems = new List<BusinessModel>();
+    private string errorString;
+
+    //protected override async Task OnParametersSetAsync()
+    //{
+    //    HttpResponseMessage response = await Http.GetAsync("api/business");
+
+    //    if (response.IsSuccessStatusCode)
+    //    {
+    //        foodItems = await response.Content.ReadFromJsonAsync<List<FoodModel>>();
+    //    }
+    //    else
+    //    {
+    //        errorString = response.ReasonPhrase;
+    //    }
+    //}
+
+    //private void FoodItemChange(ChangeEventArgs e)
+    //{
+    //    if (string.IsNullOrWhiteSpace(e.Value.ToString()) == false)
+    //    {
+    //        order.FoodId = int.Parse(e.Value.ToString());
+    //    }
+    //}
+
+
+    private async Task HandleValidSubmit()
+    {
+        //order.Total = order.Quantity * foodItems.First(x => x.FoodId == order.FoodId).Price;
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/business", business);
+            var contents = await response.Content.ReadFromJsonAsync<BusinessCreateResultsModel>();
+
+            navigationManager.NavigateTo($"business/DisplayBusiness/{contents.BusinessId}");
+        }
+        catch (Exception ex)
+        {
+            errorString = ex.Message;
+        }
+    }
+}
