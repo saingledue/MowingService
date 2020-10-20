@@ -361,6 +361,6 @@ C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\
 C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\Razor\Pages\Business\DisplayBusiness.razor.g.cs
 C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Business\DisplayBusinessAll.razor.g.cs
 C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\Razor\Pages\Business\DisplayBusinessAll.razor.g.cs
-C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\mkrj9DXqf2QIEKnqXldjlIzwqiAv1AxuomWO67J_A2I=.hash
-C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\v6uq_ZZcHj_ypmrPwjrSXdk5rtGghjX71HodF3xX78o=.hash
-C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\8WuLw1OuhmyU9eI93tbzDH_OVEmi8v__BQbfDvctkgM=.hash
+C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\sOWnhN5g0EpyQDDqt_I0o-IFMpdfrA5rWj7HujjIR4g=.hash
+C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\P_w8eRzY8OTZJwRQB-Hw8khWr4vdpnryttYG74jSdUo=.hash
+C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\abCsIr6WhrQXc50HZFGcMSuRXqft9QWMLliNYUjVlqI=.hash
