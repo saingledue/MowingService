@@ -1,0 +1,122 @@
+﻿@page "/Portfolio/DisplayPortfolioAll"
+@using System.ComponentModel.Design
+@using System.Runtime.CompilerServices
+@inject HttpClient Http
+@inject NavigationManager navigationManager
+
+
+<h3>DisplayPortfolioAll</h3>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <h4>System Error</h4>
+    <p>@errorString</p>
+}
+else
+{
+
+    <table class="table table-striped" style="margin-top: 25px">
+        <thead>
+            <tr>
+                <th>Work Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var portfolio in portfolioInfo)
+            {
+                <tr>
+                    <td>@portfolio.WorkPic</td>
+                    <td colspan="2">
+
+                        <button class="btn btn-danger" @onclick="@(b => HandleDeleteRecord(portfolio.PortfolioId))">
+                            Delete
+                        </button>
+
+
+
+                        @*@if (confirmDelete)
+                            {
+                                <button class="btn btn-outline-danger" @onclick="HandleDeleteRecord">
+                                    Confirm Delete
+                                </button>
+
+                                <button class="btn btn-secondary" @onclick="(() => confirmDelete = false)">
+                                    Cancel
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-danger" @onclick="(() => confirmDelete = true)">
+                                    Delete Order
+                                </button>
+                            }*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <!--<EditForm Model="@updateModel" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary Model="@updateModel" />-->
+
+    @*<div class="form-group">
+            <label>Name for the Order</label>
+            <InputText @bind-Value="updateModel.OrderName" class="form-control"></InputText>
+            <ValidationMessage For="@(() => updateModel.OrderName)" class="text-danger" />
+        </div>*@
+
+    <!--<div class="form-group">
+            <input type="submit" value="Sumbit Listing" class="btn btn-primary" />
+        </div>
+    </EditForm>-->
+}
+
+@code {
+
+    public List<PortfolioModel> portfolioInfo = new List<PortfolioModel>();
+
+    private string errorString;
+    //private bool confirmDelete = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        HttpResponseMessage response = await Http.GetAsync($"api/portfolio");
+
+        if (response.IsSuccessStatusCode)
+        {
+            portfolioInfo = await response.Content.ReadFromJsonAsync<List<PortfolioModel>>();
+        }
+        else
+        {
+            errorString = response.ReasonPhrase;
+        }
+    }
+
+    //private async Task HandleValidSubmit()
+    //{
+    //    try
+    //    {
+    //        HttpResponseMessage response = await Http.PutAsJsonAsync("api/business", updateModel);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        errorString = ex.Message;
+    //    }
+    //}
+
+    private async Task HandleDeleteRecord(int portfolioId)
+    {
+        HttpResponseMessage response = await Http.DeleteAsync($"api/portfolio/{portfolioId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            await OnInitializedAsync();
+        }
+        else
+        {
+            errorString = response.ReasonPhrase;
+        }
+    }
+}

@@ -1,0 +1,140 @@
+﻿@page "/Employee/DisplayEmployee/{employeeId:int}"
+@using System.ComponentModel.Design
+@using System.Runtime.CompilerServices
+@inject HttpClient Http
+@inject NavigationManager navigationManager
+
+
+<h3>Display Employee</h3>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <h4>System Error</h4>
+    <p>@errorString</p>
+}
+else
+{
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><strong>First Name</strong></td>
+                <td>@employeeInfo.FirstName</td>
+            </tr>
+            <tr>
+                <td><strong>Last Name</strong></td>
+                <td>@employeeInfo.LastName</td>
+            </tr>
+            <tr>
+                <td><strong>Age</strong></td>
+                <td>@employeeInfo.Age</td>
+            </tr>
+            <tr>
+                <td><strong>Location</strong></td>
+                <td>@businessInfo.Location</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @if (confirmDelete)
+                    {
+                        <button class="btn btn-outline-danger" @onclick="HandleDeleteRecord">
+                            Confirm Delete
+                        </button>
+
+                        <button class="btn btn-secondary" @onclick="(() => confirmDelete = false)">
+                            Cancel
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-danger" @onclick="(() => confirmDelete = true)">
+                            Delete
+                        </button>
+                    }
+                </td>
+            </tr>
+
+
+        </tbody>
+
+    </table>
+
+    <EditForm Model="@updateModel" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary Model="@updateModel" />
+
+        @*<div class="form-group">
+                <label>Name for the Order</label>
+                <InputText @bind-Value="updateModel.OrderName" class="form-control"></InputText>
+                <ValidationMessage For="@(() => updateModel.OrderName)" class="text-danger" />
+            </div>*@
+
+        @*<div class="form-group">
+                <input type="submit" value="Sumbit Listing" class="btn btn-primary" />
+            </div>*@
+    </EditForm>
+}
+
+@code {
+
+    [Parameter]
+    public int employeeId { get; set; }
+
+    public EmployeeModel employeeInfo = new EmployeeModel();
+    private EmployeeModel updateModel = new EmployeeModel();
+
+    public BusinessModel businessInfo = new BusinessModel();
+
+    private string errorString;
+    private bool confirmDelete = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        HttpResponseMessage response = await Http.GetAsync($"api/employee/{employeeId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            employeeInfo = await response.Content.ReadFromJsonAsync<EmployeeModel>();
+        }
+        else
+        {
+            errorString = response.ReasonPhrase;
+        }
+        HttpResponseMessage businessResponse = await Http.GetAsync($"api/business/{employeeInfo.BusinessId}");
+
+        if (businessResponse.IsSuccessStatusCode)
+        {
+            businessInfo = await businessResponse.Content.ReadFromJsonAsync<BusinessModel>();
+        }
+        else
+        {
+            errorString = businessResponse.ReasonPhrase;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            HttpResponseMessage response = await Http.PutAsJsonAsync("api/employee", updateModel);
+        }
+        catch (Exception ex)
+        {
+            errorString = ex.Message;
+        }
+    }
+
+    //TODO: not implemented.
+    private async Task HandleDeleteRecord()
+    {
+        HttpResponseMessage response = await Http.DeleteAsync($"api/employee/{employeeId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            navigationManager.NavigateTo("employee/list");
+        }
+        else
+        {
+            errorString = response.ReasonPhrase;
+        }
+    }
+}

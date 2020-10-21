@@ -5257,11 +5257,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\saing\\OneDrive\\Documents\\GitHub\\AspNetCoreData\\DataLibrary\\DataLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\saing\\source\\repos\\AspNetCoreData\\DataLibrary\\DataLibrary.csproj",
       "projectName": "DataLibrary",
-      "projectPath": "C:\\Users\\saing\\OneDrive\\Documents\\GitHub\\AspNetCoreData\\DataLibrary\\DataLibrary.csproj",
+      "projectPath": "C:\\Users\\saing\\source\\repos\\AspNetCoreData\\DataLibrary\\DataLibrary.csproj",
       "packagesPath": "C:\\Users\\saing\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\saing\\OneDrive\\Documents\\GitHub\\AspNetCoreData\\DataLibrary\\obj\\",
+      "outputPath": "C:\\Users\\saing\\source\\repos\\AspNetCoreData\\DataLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

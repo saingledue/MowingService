@@ -1,0 +1,109 @@
+﻿@page "/Portfolio/CreatePortfolio"
+@using System.ComponentModel.Design
+@using System.Runtime.CompilerServices
+@inject HttpClient Http
+@inject NavigationManager navigationManager
+
+<h3>Add Portfolio</h3>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <h4>System Error</h4>
+    <p>@errorString</p>
+}
+else
+{
+    <EditForm Model="@portfolio" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary Model="@portfolio"></ValidationSummary>
+        <div class="form-group">
+            <label>Work Picture</label>
+            @*<InputNumber @bind-Value="portfolio.WorkPic" class="form-control"></InputNumber>*@
+            @*<ValidationMessage For="@(() => portfolio.WorkPic)" class="text-danger" />*@
+        </div>
+
+        <div class="form-group">
+            <label>Portfolio</label>
+
+            <select @onchange="PortfolioEmployeeChange" class="form-control">
+                <option value="">select an Employee</option>
+
+                @foreach (var employee in employeeInfo)
+                {
+                    <option value="@employee.EmployeeId">@(employee.FirstName + " "+ employee.LastName)</option>
+                }
+
+            </select>
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add Portfolio" class="btn btn-primary" />
+        </div>
+    </EditForm>
+
+}
+
+@code {
+    private PortfolioModel portfolio = new PortfolioModel();
+    // private List<BusinessModel> businessItems = new List<BusinessModel>();
+    private string errorString;
+
+    //protected override async Task OnParametersSetAsync()
+    //{
+    //    HttpResponseMessage response = await Http.GetAsync("api/business");
+
+    //    if (response.IsSuccessStatusCode)
+    //    {
+    //        foodItems = await response.Content.ReadFromJsonAsync<List<FoodModel>>();
+    //    }
+    //    else
+    //    {
+    //        errorString = response.ReasonPhrase;
+    //    }
+    //}
+
+    private void PortfolioEmployeeChange(ChangeEventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(e.Value.ToString()) == false)
+        {
+            portfolio.EmployeeId = int.Parse(e.Value.ToString());
+        }
+    }
+
+    public static List<EmployeeModel> employeeInfo = new List<EmployeeModel>();
+
+
+    private bool confirmdelete = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        HttpResponseMessage response = await Http.GetAsync($"api/employee");
+
+        if (response.IsSuccessStatusCode)
+        {
+            employeeInfo = await response.Content.ReadFromJsonAsync<List<EmployeeModel>>();
+        }
+        else
+        {
+            errorString = response.ReasonPhrase;
+        }
+    }
+
+
+    private async Task HandleValidSubmit()
+    {
+        //order.Total = order.Quantity * foodItems.First(x => x.FoodId == order.FoodId).Price;
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/portfolio", portfolio);
+            var contents = await response.Content.ReadFromJsonAsync<PortfolioCreateResultsModel>();
+
+            navigationManager.NavigateTo($"portfolio/DisplayPortfolio/{contents.PortfolioId}");
+        }
+        catch (Exception ex)
+        {
+            errorString = ex.Message;
+        }
+    }
+}

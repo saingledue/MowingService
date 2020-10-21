@@ -13,11 +13,4 @@
     <PackageReference Include="System.Net.Http.Json" Version="3.2.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Employee\" />
-    <Folder Include="Models\Portfolio\" />
-    <Folder Include="Pages\Employee\" />
-    <Folder Include="Pages\Portfolio\" />
-  </ItemGroup>
-
 </Project>
