@@ -373,6 +373,6 @@ C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\
 C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\Razor\Pages\Portfolio\CreatePortfolio.razor.g.cs
 C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\Razor\Pages\Portfolio\DiplayPortfolio.razor.g.cs
 C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\Razor\Pages\Portfolio\DisplayPortfolioAll.razor.g.cs
-C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\d5x5bf56f2GykRWVfW3ZOtabIS74-ExHBnWG0H97C8A=.hash
-C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\vs-C70y9RgKwmB55DwzAADFXTxxASx5H74E-UQWUfFg=.hash
-C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\HeTfyMoGJ0l1dyGFRWFqfWKo-nQQ1Thiv-ObMbk7sgA=.hash
+C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\sDfO745wZqgn8IMS-umujXXOUIcidiMC6uK6BT72u6Y=.hash
+C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\wffsYus182K7huat24pZDPUAnSbSEhDBFbuE_syWdCI=.hash
+C:\Users\saing\source\repos\BlazorClientWebAssembly\BlazorClientWebAssembly\obj\Debug\netstandard2.1\integrity\DWzAugeqrZibnngvAC4z-xpSOUCmJkywRjcpEW5tZDU=.hash

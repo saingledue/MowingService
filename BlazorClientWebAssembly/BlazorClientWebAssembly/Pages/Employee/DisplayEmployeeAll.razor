@@ -27,39 +27,48 @@ else
         <tbody>
             @foreach (var employee in employeeInfo)
             {
-            <tr>
-                <td>@employee.FirstName</td>
-                <td>@employee.LastName</td>
-                <td>@employee.Age</td>
-                <!--<td>@businessInfo[(employee.BusinessId) - 1].Location</td>-->
-                <td colspan="2">
+                foreach (var business in businessInfo)
+                {
+                    @if (employee.BusinessId == business.BusinessId)
+                    {
+                        <tr>
+                            <td>@employee.FirstName</td>
+                            <td>@employee.LastName</td>
+                            <td>@employee.Age</td>
 
-                    <button class="btn btn-danger" @onclick="@(b => HandleDeleteRecord(employee.EmployeeId))">
-                        Delete
-                    </button>
+                            <td>@business.Location</td>
+                            
+                            <td colspan="2">
+
+                                <button class="btn btn-danger" @onclick="@(b => HandleDeleteRecord(employee.EmployeeId))">
+                                    Delete
+                                </button>
 
 
 
-                    @*@if (confirmDelete)
-            {
-                <button class="btn btn-outline-danger" @onclick="HandleDeleteRecord">
-                    Confirm Delete
-                </button>
+                                @*@if (confirmDelete)
+                            {
+                                <button class="btn btn-outline-danger" @onclick="HandleDeleteRecord">
+                                    Confirm Delete
+                                </button>
 
-                <button class="btn btn-secondary" @onclick="(() => confirmDelete = false)">
-                    Cancel
-                </button>
-            }
-            else
-            {
-                <button class="btn btn-danger" @onclick="(() => confirmDelete = true)">
-                    Delete Order
-                </button>
-            }*@
-                </td>
-            </tr>
-            }
-        </tbody>
+                                <button class="btn btn-secondary" @onclick="(() => confirmDelete = false)">
+                                    Cancel
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-danger" @onclick="(() => confirmDelete = true)">
+                                    Delete Order
+                                </button>
+                            }*@
+                            </td>
+                        </tr>
+                        }
+                    }
+
+                }
+            </tbody>
     </table>
 
 
